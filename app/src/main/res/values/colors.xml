@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Couleurs principales -->
+    <color name="color_primary">#2962FF</color>        <!-- Bleu vif -->
+    <color name="color_primary_variant">#0039CB</color>
+    <color name="color_secondary">#00BFA5</color>      <!-- Vert-bleu accent -->
+
+    <!-- Couleurs de fond -->
+    <color name="color_background">#F5F5F5</color>
+    <color name="color_surface">#FFFFFF</color>
+
+    <!-- Couleurs de texte -->
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_on_secondary">#FFFFFF</color>
+    <color name="color_on_background">#212121</color>
+    <color name="color_on_surface">#212121</color>
+
+    <!-- États -->
+    <color name="color_error">#D32F2F</color>
+    <color name="color_success">#388E3C</color>
+
+    <!-- Neutres -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="gray_dark">#424242</color>
+</resources>

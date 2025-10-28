@@ -1,0 +1,143 @@
+[versions]
+accompanistSystemuicontroller = "0.36.0"
+agp = "8.12.2"
+kotlin = "2.0.21"
+coreKtx = "1.17.0"
+lifecycleRuntimeKtx = "2.9.3"
+activityCompose = "1.10.1"
+composeBom = "2024.09.00"
+navigationCompose = "2.9.5"
+navigationRuntimeKtx = "2.9.3"
+phosphorIconVersion = "1.0.0"
+roomKtx = "2.7.2"
+engageCore = "1.5.9"
+material3 = "1.3.2"
+adsMobileSdk = "0.19.0-beta01"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+foundation = "1.9.2"
+animation = "1.9.2"
+foundationLayout = "1.9.2"
+koin-bom = "4.1.1"
+transportApi = "4.0.0"
+junit = "4.13.2"
+annotationJvm = "1.9.0"
+
+# ici il y a des warnings, il trouve des versions plus hautes mais pas utilisable a cause de notre version qui est trop basse
+
+[libraries]
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
+adamglin-phosphor-icon = { module = "com.adamglin:phosphor-icon", version.ref = "phosphorIconVersion" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+engage-core = { group = "com.google.android.engage", name = "engage-core", version.ref = "engageCore" }
+ads-mobile-sdk = { group = "com.google.android.libraries.ads.mobile.sdk", name = "ads-mobile-sdk", version.ref = "adsMobileSdk" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+
+androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }
+androidx-compose-animation-graphics = { group = "androidx.compose.animation", name = "animation-graphics" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+androidx-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "animation" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+
+
+# Koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-core    = { module = "io.insert-koin:koin-core"}
+koin-android = { module = "io.insert-koin:koin-android"}
+koin-compose = { module = "io.insert-koin:koin-compose"}
+
+transport-api = { group = "com.google.android.datatransport", name = "transport-api", version.ref = "transportApi" }
+androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
+
+
+[plugins]
+
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+
+[bundles]
+
+# --- Base commune à presque tous les modules ---
+common-core = [
+    "androidx-core-ktx",
+    "androidx-lifecycle-runtime-ktx"
+]
+
+# --- Base Compose (pour les modules UI) ---
+compose = [
+    "androidx-compose-bom",
+    "androidx-compose-ui",
+    "androidx-compose-ui-graphics",
+    "androidx-compose-ui-tooling-preview",
+    "androidx-compose-material3",
+    "androidx-material-icons-extended",
+    "androidx-compose-foundation",
+    "androidx-compose-foundation-layout",
+    "androidx-compose-animation",
+    "androidx-compose-animation-graphics",
+    "androidx-activity-compose",
+    "androidx-navigation-compose"
+]
+
+# --- Test tools (pour tous les modules) ---
+test = [
+    "junit",
+    "androidx-junit",
+    "androidx-espresso-core",
+    "androidx-compose-ui-test-junit4",
+    "androidx-compose-ui-test-manifest"
+]
+
+# --- Koin (injection de dépendances) ---
+koin = [
+    "koin-core",
+    "koin-android",
+    "koin-compose"
+]
+
+# --- Room (base de données locale) ---
+room = [
+    "androidx-room-ktx"
+]
+
+# --- Navigation ---
+navigation = [
+    "androidx-navigation-runtime-ktx",
+    "androidx-navigation-compose"
+]
+
+# --- UI extra (icônes, animations externes, etc.) ---
+ui-extras = [
+    "adamglin-phosphor-icon"
+]
+
+# --- Google / Services divers ---
+google = [
+    "engage-core",
+    "ads-mobile-sdk",
+    "transport-api"
+]
+
+
+system-controller = [
+    "accompanist-systemuicontroller"
+]

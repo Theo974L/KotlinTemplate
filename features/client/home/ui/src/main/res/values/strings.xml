@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SpaceBooking</string>
+
+    <string name="home_title">Init Projet</string>
+
+    <string name="bienvenue">Bienvenue dans SpaceBooking 👋</string>
+    <string name="desc">Ici tu pourras gérer tes espaces, voir tes réservations et explorer les fonctionnalités du projet.</string>
+    <string name="titre">Actions rapides</string>
+
+    <string name="button_text">Init Projet</string>
+    <string name="button_text2">Page details</string>
+
+</resources>
