@@ -1,6 +1,5 @@
 package com.example.theolaforgeeval.navhost
 
-//Admin imports
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -20,13 +19,21 @@ fun AppNavHost(navController: NavHostController) {
         startDestination = Screen.Home.route,
     ) {
 
+        /**
+         *
+         * @see Composable ça sert a afficher les differentes pages de l'application
+         *
+         *
+         */
+
+
         composable(
             route = Screen.Home.route
         ) {
             val viewModel = viewModel { HomeViewModel() }
             HomeScreen(
                 viewModel = viewModel,
-                OnNavigateDetails = { id ->
+                onNavigateDetails = { id ->
                     navController.navigate(Screen.Details.createRoute(id)) {
                         popUpTo(Screen.Home.route) { inclusive = true }
                     }

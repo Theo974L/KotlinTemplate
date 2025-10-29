@@ -25,12 +25,14 @@ class DetailsViewModel() : ViewModel(), KoinComponent {
     val events: Flow<DetailsUiEvent> = _uiEvents.receiveAsFlow()
 
     fun onStart(id: Int) {
+        // On prend l'id passé en paramètre et on le stocke dans l'état
         _uiState.update { it.copy(id = id) }
 
+        // Coroutine pour prendre le detail du pokemon
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
             try {
-                val pokemon = pokemonRepository.getPokemonById(id = _uiState.value.id) // récupère tous les Pokémon
+                val pokemon = pokemonRepository.getPokemonById(id = _uiState.value.id) // récupère un pokemon
 
                 Log.d("DetailsViewModel", "Pokemon reçu: $pokemon")
 
@@ -44,6 +46,7 @@ class DetailsViewModel() : ViewModel(), KoinComponent {
                     isLoading = false,
                     error = e.message ?: "Erreur inconnue"
                 )
+                // Event si erreur
                 _uiEvents.send(Error("Les données ont pas pu être récupérées"))
             }
         }
@@ -56,9 +59,6 @@ class DetailsViewModel() : ViewModel(), KoinComponent {
                     _uiEvents.send(Back())
                 }
             }
-
-//            is TypedPassword -> onPasswordChange(action.password)
-//            ClickedOnLogin -> onLoginClicked()
         }
     }
 }

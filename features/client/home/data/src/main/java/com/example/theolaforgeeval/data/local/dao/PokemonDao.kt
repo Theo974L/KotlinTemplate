@@ -3,6 +3,10 @@ package com.example.theolaforgeeval.data.local.dao
 import androidx.room.*
 import com.example.theolaforgeeval.model.PokemonModel
 
+/**
+ * Le DAO pour la bdd en local, permet d'effectuer des requêtes sur la bdd
+ */
+
 @Dao
 interface PokemonDao {
 

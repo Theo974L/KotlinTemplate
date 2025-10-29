@@ -33,6 +33,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -52,9 +53,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel, OnNavigateDetails: (Int) -> Unit, navController: NavController) {
+fun HomeScreen(viewModel: HomeViewModel, onNavigateDetails: (Int) -> Unit, navController: NavController) {
     val uiState by viewModel.state.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(viewModel) {
         viewModel.events.collect { event ->
@@ -62,21 +63,21 @@ fun HomeScreen(viewModel: HomeViewModel, OnNavigateDetails: (Int) -> Unit, navCo
                 is Error -> {
                     launch {
                         val job = launch {
-                            snackbarHostState.showSnackbar(
+                            snackBarHostState.showSnackbar(
                                 message = event.message,
                                 duration = SnackbarDuration.Indefinite
                             )
                         }
                         delay(1000)
                         job.cancel()
-                        snackbarHostState.currentSnackbarData?.dismiss()
+                        snackBarHostState.currentSnackbarData?.dismiss()
                     }
                 }
             }
         }
     }
 
-    Home(uiState, viewModel::onAction, OnNavigateDetails, navController)
+    Home(uiState, viewModel::onAction, onNavigateDetails, navController)
 
 }
 
@@ -84,7 +85,7 @@ fun HomeScreen(viewModel: HomeViewModel, OnNavigateDetails: (Int) -> Unit, navCo
 private fun Home(
     uiState: HomeUiState,
     onAction: (HomeUiAction) -> Unit,
-    OnNavigateDetails: (Int) -> Unit,
+    onNavigateDetails: (Int) -> Unit,
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
@@ -160,23 +161,6 @@ private fun Home(
                 modifier = Modifier.fillMaxWidth()
             )
 
-
-            Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-            ) {
-                uiState.pokemonList.forEach {
-                    PokemonCard(
-                        pokemon = it,
-                        onClick = { OnNavigateDetails(it.id) }
-                    )
-                }
-            }
-
-
-
             when {
                 uiState.isLoading -> {
                     Box(
@@ -185,7 +169,7 @@ private fun Home(
                             .padding(top = 32.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        CircularProgressIndicator()
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.onBackground)
                     }
                 }
 
@@ -208,12 +192,25 @@ private fun Home(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         uiState.pokemonList.forEach {
-                            PokemonCard(pokemon = it, onClick = { OnNavigateDetails(it.id) })
+                            PokemonCard(pokemon = it, onClick = { onNavigateDetails(it.id) })
                         }
                     }
                 }
             }
 
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                uiState.pokemonList.forEach {
+                    PokemonCard(
+                        pokemon = it,
+                        onClick = { onNavigateDetails(it.id) }
+                    )
+                }
+            }
         }
     }
 }

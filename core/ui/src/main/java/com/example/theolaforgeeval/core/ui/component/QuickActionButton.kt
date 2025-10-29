@@ -15,6 +15,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
 
+/**
+ *
+ * @see QuickActionButton est un composant réutilisable unidirectionnelle, il ne dépend de personne
+ *
+ */
+
 @Composable
 fun QuickActionButton(
     label: String,

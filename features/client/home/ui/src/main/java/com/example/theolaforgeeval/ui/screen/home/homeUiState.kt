@@ -11,7 +11,7 @@ import com.example.theolaforgeeval.model.PokemonModel
 data class HomeUiState(
     val namePokemon: String = "",
     val pokemonList: List<PokemonModel> = emptyList(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: String? = null,
 )
 

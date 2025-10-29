@@ -12,6 +12,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
+/**
+ *
+ * @see TypeChip C'est un composant pour les types POKEMON
+ * @param type c'est le type du pokemon
+ * @return un composant type chip
+ *
+ */
+
 @Composable
 fun TypeChip(type: String) {
     val typeColor = when (type.lowercase()) {

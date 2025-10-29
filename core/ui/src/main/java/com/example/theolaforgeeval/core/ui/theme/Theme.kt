@@ -13,6 +13,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 
+/**
+ *
+ *
+ * @see LightColorScheme couleur pour le theme clair
+ * @see DarkColorScheme couleur pour le theme sombre
+ *
+ * @see TheoLaforgeEvalTheme c'est la logique pour utiliser soit le theme sombre soit le theme clair
+ *
+ */
+
 private val LightColorScheme = lightColorScheme(
     primary      = AppColors.Primary,
     onPrimary    = Color.White,
@@ -69,7 +79,6 @@ fun TheoLaforgeEvalTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        // typography = Typography, // à activer plus tard si tu veux une typographie custom
         content = content
     )
 }

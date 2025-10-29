@@ -3,7 +3,6 @@ package com.example.theolaforgeeval.ui.screen.details
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,11 +28,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
@@ -44,14 +40,13 @@ import com.example.theolaforgeeval.core.extensions.vibrate
 import com.example.theolaforgeeval.core.ui.component.BottomNavigationBar
 import com.example.theolaforgeeval.core.ui.component.QuickActionButton
 import com.example.theolaforgeeval.core.ui.component.TypeChip
-import com.example.theolaforgeeval.features.client.home.ui.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
 fun DetailsScreen(viewModel: DetailsViewModel, id: Int, navController: NavController) {
     val uiState by viewModel.state.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(viewModel) {
         viewModel.events.collect { event ->
@@ -60,14 +55,14 @@ fun DetailsScreen(viewModel: DetailsViewModel, id: Int, navController: NavContro
                 is Error -> {
                     launch {
                         val job = launch {
-                            snackbarHostState.showSnackbar(
+                            snackBarHostState.showSnackbar(
                                 message = event.message,
                                 duration = SnackbarDuration.Indefinite
                             )
                         }
                         delay(1000)
                         job.cancel()
-                        snackbarHostState.currentSnackbarData?.dismiss()
+                        snackBarHostState.currentSnackbarData?.dismiss()
                     }
                 }
             }
@@ -82,7 +77,6 @@ fun DetailsScreen(viewModel: DetailsViewModel, id: Int, navController: NavContro
 
     Details(
         uiState,
-        viewModel::onAction,
         navController
     )
 
@@ -90,7 +84,6 @@ fun DetailsScreen(viewModel: DetailsViewModel, id: Int, navController: NavContro
 @Composable
 fun Details(
     uiState: DetailsUiState,
-    onAction: (DetailsUiAction) -> Unit,
     navController: NavController,
     modifier: Modifier = Modifier
 ) {

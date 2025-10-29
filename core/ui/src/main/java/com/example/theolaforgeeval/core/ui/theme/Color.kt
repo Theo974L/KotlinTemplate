@@ -2,6 +2,12 @@ package com.example.theolaforgeeval.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+/**
+ *
+ * @see AppColors Couleur de l'application
+ *
+ * Toutes les couleurs ne sont pas utilisées mais elles sont en prévisions
+ */
 
 object AppColors {
     val Primary       = Color(0xFF1E40AF)

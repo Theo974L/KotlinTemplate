@@ -28,9 +28,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
     override fun onPause() {
         super.onPause()
-        Log.d("MainActivity", "App mise en pause, sauvegarde de l'état utilisateur")
+        Log.d("MainActivity", "App mise en pause")
     }
 
 

@@ -2,9 +2,14 @@ package com.example.theolaforgeeval.data.local.database
 
 
 import androidx.room.TypeConverter
-import com.example.theolaforgeeval.model.PokemonModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
+/**
+ *
+ * @see Converters sert a convertir des types non supporté par room en type supporté par room
+ *
+ */
 
 class Converters {
 
@@ -20,17 +25,5 @@ class Converters {
         if (value == null) return emptyList()
         val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(value, type)
-    }
-
-    // Exemple pour un objet custom (Stats, Abilities, etc.)
-    @TypeConverter
-    fun fromPokemonModel(pokemon: PokemonModel?): String? {
-        return gson.toJson(pokemon)
-    }
-
-    @TypeConverter
-    fun toPokemonModel(value: String?): PokemonModel? {
-        if (value == null) return null
-        return gson.fromJson(value, PokemonModel::class.java)
     }
 }

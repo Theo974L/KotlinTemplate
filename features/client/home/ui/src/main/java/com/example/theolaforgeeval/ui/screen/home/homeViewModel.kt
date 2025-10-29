@@ -1,6 +1,5 @@
 package com.example.theolaforgeeval.ui.screen.home
 
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.theolaforgeeval.repository.PokemonRepository
@@ -29,14 +28,12 @@ class HomeViewModel() : ViewModel(), KoinComponent {
 
     fun onStart() {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
             try {
                 val allPokemons = pokemonRepository.getPokemons() // récupère tous les Pokémon
                 val firstTwenty = allPokemons.take(20) // garde seulement les 20 premiers
 
                 _uiState.value = _uiState.value.copy(
                     pokemonList = firstTwenty,
-                    isLoading = false,
                     error = null
                 )
             } catch (e: Exception) {
@@ -45,6 +42,8 @@ class HomeViewModel() : ViewModel(), KoinComponent {
                     error = e.message ?: "Erreur inconnue"
                 )
                 _uiEvents.send(Error("Les données ont pas pu être récupérées"))
+            } finally {
+                _uiState.value = _uiState.value.copy( isLoading = false )
             }
         }
     }
@@ -53,8 +52,6 @@ class HomeViewModel() : ViewModel(), KoinComponent {
         when (action) {
             is TypedNamePokemon -> { onNamePokemonChange(action.namePokemon) }
             is ClickedOnSearch -> { onSearchClicked() }
-//            is TypedPassword -> onPasswordChange(action.password)
-//            ClickedOnLogin -> onLoginClicked()
         }
     }
 
@@ -66,7 +63,11 @@ class HomeViewModel() : ViewModel(), KoinComponent {
 
         viewModelScope.launch {
             if(_uiState.value.namePokemon.isNotEmpty()) {
-
+                /* TODO Feature trop peu importante
+                *
+                * Seulement la logique est a mettre ici
+                *
+                * */
             }
         }
     }

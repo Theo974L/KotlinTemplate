@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class SpritesDto(
     val regular: String? = null,
     val shiny: String? = null,
-    @SerialName("gmax") val gMax: GmaxDto? = null
+    @SerialName("gmax") val gMax: GMaxDto? = null
 )
