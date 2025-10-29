@@ -1,4 +1,11 @@
 package com.example.theolaforgeeval.model
 
-class SpritesModel {
-}
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class SpritesDto(
+    val regular: String? = null,
+    val shiny: String? = null,
+    @SerialName("gmax") val gMax: GmaxDto? = null
+)

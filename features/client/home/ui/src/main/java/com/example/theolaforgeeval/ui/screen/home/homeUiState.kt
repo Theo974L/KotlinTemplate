@@ -1,5 +1,7 @@
 package com.example.theolaforgeeval.ui.screen.home
 
+import com.example.theolaforgeeval.model.PokemonModel
+
 /*
 *
 *
@@ -7,14 +9,18 @@ package com.example.theolaforgeeval.ui.screen.home
 
 
 data class HomeUiState(
+    val namePokemon: String = "",
+    val pokemonList: List<PokemonModel> = emptyList(),
     val isLoading: Boolean = false,
     val error: String? = null,
 )
 
 
 sealed interface HomeUiAction
-    data object ClickedOnLogout : HomeUiAction
+    data class TypedNamePokemon(val namePokemon : String) : HomeUiAction
+    data object ClickedOnSearch : HomeUiAction
+
 
 sealed interface HomeUiEvent
-    class Logout() : HomeUiEvent
+    data class Error(val message: String) :  HomeUiEvent
 

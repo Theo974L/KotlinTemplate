@@ -8,7 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.spacebooking.login.ui.HomeScreen
+import com.example.theolaforgeeval.ui.screen.home.HomeScreen
 import com.example.theolaforgeeval.ui.screen.details.DetailsScreen
 import com.example.theolaforgeeval.ui.screen.details.DetailsViewModel
 import com.example.theolaforgeeval.ui.screen.home.HomeViewModel

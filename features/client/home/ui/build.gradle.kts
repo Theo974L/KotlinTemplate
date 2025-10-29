@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.bundles.koin)
     implementation(libs.bundles.google)
     implementation(libs.bundles.system.controller)
+    implementation(libs.bundles.ktor)
 
 
 

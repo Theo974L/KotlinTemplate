@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -24,5 +26,7 @@ android {
 
 dependencies {
     implementation(project(":core:domain"))
+    implementation(libs.bundles.ktor)
+    implementation(libs.androidx.room.common.jvm)
 
 }

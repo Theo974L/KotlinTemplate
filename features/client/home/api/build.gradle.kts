@@ -25,5 +25,12 @@ android {
 dependencies {
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.bundles.koin)
+    implementation(libs.bundles.ktor)
+
+    implementation(libs.kotlinx.coroutines.android)
+
+
+    implementation(project(":features:client:home:domain"))
+    implementation(project(":features:client:home:data"))
 
 }
